@@ -4,7 +4,7 @@ import { tasksService } from '../services/TasksService'
 
 export class TasksController extends BaseController {
   constructor() {
-    super('api/boards/:id/lists/:listId/tasks')
+    super('api/lists/:id/tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllTasks)
@@ -15,7 +15,7 @@ export class TasksController extends BaseController {
 
   async getAllTasks(req, res, next) {
     try {
-      const tasks = await tasksService.getAllTasks(req.params.listId)
+      const tasks = await tasksService.getAllTasks(req.params.id)
       return res.send(tasks)
     } catch (error) {
       next(error)

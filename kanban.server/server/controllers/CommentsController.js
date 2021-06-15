@@ -4,7 +4,7 @@ import { commentsService } from '../services/CommentsService'
 
 export class CommentsController extends BaseController {
   constructor() {
-    super('api/boards/:id/lists/:listId/tasks/:taskId/comments')
+    super('api/tasks/:taskId/comments')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllComments)
