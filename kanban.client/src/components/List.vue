@@ -51,7 +51,7 @@ export default {
       state,
       async createTask() {
         await tasksService.createTask(state.newTask)
-        document.getElementById(props.list.id).reset()
+        state.newTask.name = ''
       },
       async deleteList() {
         await listsService.deleteList(props.list)

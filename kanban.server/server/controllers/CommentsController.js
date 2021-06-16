@@ -35,6 +35,8 @@ export class CommentsController extends BaseController {
     try {
       const commentData = req.body
       commentData.creatorId = req.userInfo.id
+      commentData.email = req.userInfo.email
+      commentData.picture = req.userInfo.picture
       const comment = await commentsService.createComment(commentData)
       return res.send(comment)
     } catch (error) {

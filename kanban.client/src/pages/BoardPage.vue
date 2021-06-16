@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="row">
+      <ActiveTask v-if="activeTask" />
+    </div>
     <div class="row m-3">
       <div class="col-12 d-flex justify-content-center">
         <form @submit.prevent="createList" class="card p-3 mx-3 bg-light shadow-lg">
@@ -40,8 +43,10 @@ export default {
     return {
       state,
       lists: computed(() => AppState.lists),
-      createList() {
-        listsService.createList(state.newList)
+      activeTask: computed(() => AppState.activeTask),
+      async createList() {
+        await listsService.createList(state.newList)
+        state.newList.name = ''
       }
     }
   }

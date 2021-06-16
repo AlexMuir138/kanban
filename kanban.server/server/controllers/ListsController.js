@@ -35,6 +35,8 @@ export class ListsController extends BaseController {
     try {
       const listData = req.body
       listData.creatorId = req.userInfo.id
+      listData.email = req.userInfo.email
+      listData.picture = req.userInfo.picture
       const list = await listsService.createList(listData)
       return res.send(list)
     } catch (error) {

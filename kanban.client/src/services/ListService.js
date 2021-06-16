@@ -10,7 +10,7 @@ class ListsService {
 
   async createList(listData) {
     const res = await api.post('api/boards/' + listData.boardId + '/lists/', listData)
-    AppState.lists = AppState.lists.push(new List(res.data))
+    AppState.lists.push(new List(res.data))
   }
 
   async deleteList(listData) {
