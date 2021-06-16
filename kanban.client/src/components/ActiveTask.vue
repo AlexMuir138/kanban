@@ -1,6 +1,6 @@
 <template>
   <!-- Modal -->
-  <div class="modal fade"
+  <div class="modal"
        id="exampleModalCenter"
        tabindex="-1"
        role="dialog"
@@ -13,6 +13,28 @@
           <h5 class="modal-title" id="exampleModalLongTitle">
             {{ activeTask.name }}
           </h5>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+            >
+              Move to List...
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                class="dropdown-item"
+
+                v-for="list in lists"
+                :key="list.id"
+                @click="changeList(list.id)"
+              >
+                {{ list.name }}
+              </a>
+            </div>
+          </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -44,18 +66,36 @@
 import { computed, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { commentsService } from '../services/CommentsService'
+import { tasksService } from '../services/TasksService'
+import { listsService } from '../services/ListService'
+import { useRoute } from 'vue-router'
 export default {
   setup() {
+    const route = useRoute()
     const state = reactive({
-      newComment: { taskId: AppState.activeTask.id }
+      newComment: { taskId: AppState.activeTask.id },
+      updatedTask: { id: AppState.activeTask.id }
+
     })
     return {
       state,
       activeTask: computed(() => AppState.activeTask),
       comments: computed(() => AppState.comments),
+      lists: computed(() => AppState.lists),
+      board: computed(() => AppState.activeBoard),
       async createComment() {
         await commentsService.createComment(state.newComment)
         state.newComment.body = ''
+      },
+      async changeList(newListId) {
+        state.updatedTask.listId = newListId
+        await tasksService.changeList(AppState.activeTask.listId, state.updatedTask)
+        // eslint-disable-next-line no-undef
+        $('#exampleModalCenter').hide()
+        // eslint-disable-next-line no-undef
+        $('.modal-backdrop').hide()
+
+        await listsService.getLists(route.params.id)
       }
 
     }
