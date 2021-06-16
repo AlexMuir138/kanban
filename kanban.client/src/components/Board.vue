@@ -1,7 +1,9 @@
 <template>
-  <div class="card col-3 text-center">
+  <div class="card col-3 text-center rounded p-3 m-4">
     <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard">
-      {{ board.name }}
+      <h4>
+        <u>{{ board.name }}</u>
+      </h4>
     </router-link>
   </div>
 </template>

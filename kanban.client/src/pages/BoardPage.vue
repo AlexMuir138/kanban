@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <form @submit.prevent="createList" class="card">
+    <div class="row m-3">
+      <div class="col-12 d-flex justify-content-center">
+        <form @submit.prevent="createList" class="card p-3 mx-3 bg-light shadow-lg">
           <label for="List Name">
             <input type="text" class="form" v-model="state.newList.name" placeholder="New List Name">
           </label>
-          <button type="submit">
-            Create List
+          <button type="submit" class="btn btn-primary m-1">
+            Create New List
           </button>
         </form>
       </div>

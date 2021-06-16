@@ -1,14 +1,14 @@
 <template>
-  <div class="col-3">
+  <div class="col-3 m-3 p-3">
     <div class="card">
-      <div class="card-header">
-        {{ list.name }}
+      <div class="card-header text-center text-light bg-dark">
+        <h3> {{ list.name }}</h3>
       </div>
       <div class="card-body">
         <Task v-for="task in state.tasks" :key="task.id" :task="task" />
       </div>
-      <div class="card-footer">
-        <form @submit.prevent="createTask" :id="list.id">
+      <div class="card-footer bg-dark">
+        <form @submit.prevent="createTask" :id="list.id" class="d-flex justify-content-center flex-column">
           <label for="Task Name">
             <input type="text" name="Task Name" placeholder="Create a Task" v-model="state.newTask.name">
           </label>
