@@ -10,10 +10,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
+          <h5 class="modal-title text-success" id="exampleModalLongTitle">
             <u> {{ activeTask.name }}</u>
           </h5>
-          <div class="dropdown">
+          <div class="dropdown px-5">
             <button class="btn btn-secondary dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton"

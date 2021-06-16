@@ -2,9 +2,7 @@
   <div class="border-1 col-3 m-3 p-3 shadow-lg bg-info rounded">
     <div class="card border-0">
       <div class="card-header text-center text-light bg-info">
-        <i @click="deleteList" v-if="list.creatorId === account.id">X</i>
         <h3><u> {{ list.name }}</u></h3>
-        <h3><i @click="deleteList" class="mdi mdi-trash-can-outline d-flex justify-content-end"></i></h3>
       </div>
       <div class="card-body">
         <Task v-for="task in state.tasks" :key="task.id" :task="task" />
@@ -14,10 +12,15 @@
           <label for="Task Name" class="d-flex justify-content-center">
             <input type="text" name="Task Name" placeholder="Create a Task" v-model="state.newTask.name">
           </label>
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center p-3 ">
             <button type="submit" class="btn btn-primary">
               Create Task
             </button>
+          </div>
+          <div>
+            <h5 class="d-flex justify-content-center p-2 text-danger">
+              Trash this list<i @click="deleteList" class="mdi mdi-trash-can-outline"></i>
+            </h5>
           </div>
         </form>
       </div>

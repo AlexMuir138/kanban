@@ -3,7 +3,12 @@
     <div class="col-12">
       <div class="commentBody border-0 rounded p-3 bg-success">
         {{ comment.body }}
-        <i @click="deleteComment" v-if="comment.creatorId === account.id">X</i>
+        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline"></i>
+      </div>
+      <div class="d-flex justify-content-end p-3">
+        <img :src="comment.picture" :alt="comment.email" class="rounded-pill" height="40" />
+        <p class="p-2">
+          {{ comment.email }}
         </p>
       </div>
     </div>

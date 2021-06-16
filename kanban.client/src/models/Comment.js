@@ -5,5 +5,6 @@ export class Comment {
     this.id = data.id
     this.picture = data.picture
     this.email = data.email
+    this.creatorId = data.creatorId
   }
 }
