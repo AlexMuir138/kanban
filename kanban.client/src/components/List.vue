@@ -1,20 +1,22 @@
 <template>
-  <div class="col-3 m-3 p-3">
-    <div class="card">
-      <div class="card-header text-center text-light bg-dark">
-        <h3> {{ list.name }}</h3>
+  <div class="col-3 m-3 p-3 shadow-lg bg-info rounded">
+    <div class="card border-0">
+      <div class="card-header text-center text-light bg-info">
+        <h3><u> {{ list.name }}</u></h3>
       </div>
       <div class="card-body">
         <Task v-for="task in state.tasks" :key="task.id" :task="task" />
       </div>
-      <div class="card-footer bg-dark">
-        <form @submit.prevent="createTask" :id="list.id" class="d-flex justify-content-center flex-column">
-          <label for="Task Name">
+      <div class="card-footer bg-info">
+        <form @submit.prevent="createTask" :id="list.id">
+          <label for="Task Name" class="d-flex justify-content-center">
             <input type="text" name="Task Name" placeholder="Create a Task" v-model="state.newTask.name">
           </label>
-          <button type="submit" class="btn btn-primary">
-            Create Task
-          </button>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">
+              Create Task
+            </button>
+          </div>
         </form>
       </div>
     </div>
