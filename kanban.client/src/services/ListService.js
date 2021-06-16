@@ -9,12 +9,12 @@ class ListsService {
   }
 
   async createList(listData) {
-    const res = await api.post('api/boards/' + listData.boardId + '/lists', listData)
+    const res = await api.post('api/boards/' + listData.boardId + '/lists/', listData)
     AppState.lists = AppState.lists.push(new List(res.data))
   }
 
   async deleteList(listData) {
-    await api.delete('api/boards/' + listData.boardId + 'lists' + listData.id)
+    await api.delete('api/boards/' + listData.boardId + '/lists/' + listData.id)
     AppState.lists = AppState.lists.filter(l => l.id !== listData.id)
   }
 }
