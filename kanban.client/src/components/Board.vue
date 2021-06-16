@@ -1,9 +1,8 @@
 <template>
-  <div class="card col-3 text-center rounded p-3 m-4">
+  <div class="card col-3 text-center">
+    <i @click="deleteBoard">X</i>
     <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard">
-      <h4>
-        <u>{{ board.name }}</u>
-      </h4>
+      {{ board.name }}
     </router-link>
   </div>
 </template>
@@ -16,6 +15,9 @@ export default {
     return {
       setActiveBoard() {
         boardsService.setActiveBoard(props.board.id)
+      },
+      async deleteBoard() {
+        await boardsService.deleteBoard(props.board.id)
       }
     }
   }

@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-header text-center text-light bg-dark">
         <h3> {{ list.name }}</h3>
+        <i @click="deleteList">X</i>
       </div>
       <div class="card-body">
         <Task v-for="task in state.tasks" :key="task.id" :task="task" />
@@ -26,6 +27,7 @@ import { reactive } from '@vue/reactivity'
 import { tasksService } from '../services/TasksService'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { listsService } from '../services/ListService'
 export default {
   props: { list: { type: Object, required: true } },
   setup(props) {
@@ -48,6 +50,9 @@ export default {
       async createTask() {
         await tasksService.createTask(state.newTask)
         document.getElementById(props.list.id).reset()
+      },
+      async deleteList() {
+        await listsService.deleteList(props.list)
       }
     }
   }

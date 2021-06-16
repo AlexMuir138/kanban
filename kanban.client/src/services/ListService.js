@@ -13,9 +13,9 @@ class ListsService {
     AppState.lists = AppState.lists.push(new List(res.data))
   }
 
-  async deleteList(id) {
-    await api.delete('api/boards/' + id)
-    AppState.lists = AppState.lists.filter(l => l.id !== id)
+  async deleteList(listData) {
+    await api.delete('api/boards/' + listData.boardId + 'lists' + listData.id)
+    AppState.lists = AppState.lists.filter(l => l.id !== listData.id)
   }
 }
 
