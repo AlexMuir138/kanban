@@ -2,7 +2,7 @@
   <div class="col-3 m-3 p-3 shadow-lg bg-info rounded">
     <div class="card border-0">
       <div class="card-header text-center text-light bg-info">
-        <i @click="deleteList">X</i>
+        <i @click="deleteList" v-if="list.creatorId === account.id">X</i>
         <h3><u> {{ list.name }}</u></h3>
       </div>
       <div class="card-body">
@@ -49,6 +49,7 @@ export default {
     })
     return {
       state,
+      account: computed(() => AppState.account),
       async createTask() {
         await tasksService.createTask(state.newTask)
         state.newTask.name = ''
