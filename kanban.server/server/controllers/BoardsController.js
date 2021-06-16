@@ -34,6 +34,8 @@ export class BoardsController extends BaseController {
     try {
       const boardData = req.body
       boardData.creatorId = req.userInfo.id
+      boardData.email = req.userInfo.email
+      boardData.picture = req.userInfo.picture
       const board = await boardsService.create(boardData)
       return res.send(board)
     } catch (error) {

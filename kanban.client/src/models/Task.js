@@ -3,5 +3,7 @@ export class Task {
     this.name = data.name
     this.listId = data.listId
     this.id = data.id
+    this.picture = data.picture
+    this.email = data.email
   }
 }

@@ -1,7 +1,7 @@
-export class Board {
+export class Comment {
   constructor(data) {
-    this.name = data.name
-    this.creatorId = data.creatorId
+    this.body = data.body
+    this.taskId = data.taskId
     this.id = data.id
     this.picture = data.picture
     this.email = data.email

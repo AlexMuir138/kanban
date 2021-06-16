@@ -35,6 +35,8 @@ export class TasksController extends BaseController {
     try {
       const taskData = req.body
       taskData.creatorId = req.userInfo.id
+      taskData.email = req.userInfo.email
+      taskData.picture = req.userInfo.picture
       const task = await tasksService.createTask(taskData)
       return res.send(task)
     } catch (error) {
