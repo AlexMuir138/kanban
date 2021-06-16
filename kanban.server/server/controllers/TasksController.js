@@ -10,6 +10,7 @@ export class TasksController extends BaseController {
       .get('', this.getAllTasks)
       .get('/:taskId', this.getTaskById)
       .post('', this.createTask)
+      .put('/:taskId', this.changeList)
       .delete('/:taskId', this.deleteTask)
   }
 
@@ -47,6 +48,15 @@ export class TasksController extends BaseController {
   async deleteTask(req, res, next) {
     try {
       const task = await tasksService.deleteTask(req.params.taskId)
+      return res.send(task)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async changeList(req, res, next) {
+    try {
+      const task = await tasksService.changeList(req.params.taskId, req.body)
       return res.send(task)
     } catch (error) {
       next(error)

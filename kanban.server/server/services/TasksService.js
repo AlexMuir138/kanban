@@ -16,5 +16,9 @@ class TasksService {
   async deleteTask(id) {
     return await dbContext.Task.findByIdAndDelete(id)
   }
+
+  async changeList(taskId, updatedTask) {
+    return await dbContext.Task.findByIdAndUpdate(taskId, updatedTask, { new: true })
+  }
 }
 export const tasksService = new TasksService()

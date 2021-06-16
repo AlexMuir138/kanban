@@ -1,7 +1,8 @@
 <template class="pb-3">
   <div class="border-1 col-3 m-3 p-3 shadow-lg bg-info rounded">
     <div class="card border-0">
-      <div class="card-header text-center text-light bg-info d-flex align-items-column justify-content-between">
+      <div class="card-header text-center text-light bg-info">
+        <i @click="deleteList" v-if="list.creatorId === account.id">X</i>
         <h3><u> {{ list.name }}</u></h3>
         <h3><i @click="deleteList" class="mdi mdi-trash-can-outline d-flex justify-content-end"></i></h3>
       </div>
@@ -49,6 +50,7 @@ export default {
     })
     return {
       state,
+      account: computed(() => AppState.account),
       async createTask() {
         await tasksService.createTask(state.newTask)
         state.newTask.name = ''

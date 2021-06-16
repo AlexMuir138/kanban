@@ -3,12 +3,7 @@
     <div class="col-12">
       <div class="commentBody border-0 rounded p-3 bg-success">
         {{ comment.body }}
-        <i @click="deleteComment">X</i>
-      </div>
-      <div class="d-flex justify-content-end p-2">
-        <img height="40" class="rounded-pill" :src="comment.picture" :alt="comment.email ">
-        <p class="pt-2 px-2">
-          {{ comment.email }}
+        <i @click="deleteComment" v-if="comment.creatorId === account.id">X</i>
         </p>
       </div>
     </div>
@@ -16,11 +11,15 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
 import { commentsService } from '../services/CommentsService'
+import { AppState } from '../AppState'
 export default {
   props: { comment: { type: Object, required: true } },
   setup(props) {
     return {
+      account: computed(() => AppState.account),
+
       async deleteComment() {
         await commentsService.deleteComment(props.comment)
       }
