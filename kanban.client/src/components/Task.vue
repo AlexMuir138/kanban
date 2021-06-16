@@ -1,11 +1,13 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <i @click="deleteTask">X</i>
-        <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter">
-          {{ task.name }}
-        </p>
+      <div class="card border-0">
+        <div>
+          <i @click="deleteTask" class="mdi mdi-trash-can-outline"></i>
+          <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter">
+            {{ task.name }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

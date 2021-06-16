@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div class="row">
-      <ActiveTask v-if="activeTask" />
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <ActiveTask v-if="activeTask" />
+      </div>
     </div>
     <div class="row m-3">
       <div class="col-12 d-flex justify-content-center">
@@ -55,5 +57,9 @@ export default {
 </script>
 
 <style>
+form {
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
+}
 
 </style>

@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
-            {{ activeTask.name }}
+            <u> {{ activeTask.name }}</u>
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -30,9 +30,11 @@
                       v-model="state.newComment.body"
                       class="form-control mb-1"
             ></textarea>
-            <button class="btn btn-primary" type="submit">
-              submit commment
-            </button>
+            <div class="d-flex justify-content-end p-2">
+              <button class="btn btn-primary" type="submit">
+                submit commment
+              </button>
+            </div>
           </form>
         </div>
       </div>

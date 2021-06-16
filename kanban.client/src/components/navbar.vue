@@ -4,8 +4,8 @@
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+          src="../assets/img/samurai-logo.png"
+          height="100"
         />
       </div>
     </router-link>
@@ -24,7 +24,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+            <h2 class="mdi mdi-home">
+              Home
+            </h2>
           </router-link>
         </li>
       </ul>
@@ -118,5 +120,9 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+img {
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
 }
 </style>
