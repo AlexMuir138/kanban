@@ -16,6 +16,11 @@ class BoardsService {
     AppState.boards = AppState.boards.push(res.data)
   }
 
+  async deleteBoard(id) {
+    await api.delete('api/boards')
+    AppState.boards = AppState.boards.filter(b => b.id !== id)
+  }
+
   setActiveBoard(id) {
     const board = AppState.boards.find(b => b.id === id)
     AppState.activeBoard = board

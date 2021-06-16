@@ -21,5 +21,14 @@ class TasksService {
     }
     logger.log(AppState.tasks)
   }
+
+  async deleteTask(taskData) {
+    await api.delete('/api/lists/' + taskData.listId + '/tasks' + taskData.id)
+    AppState.tasks[taskData.listId].filter(t => t.id !== taskData.id)
+  }
+
+  setActiveTask(taskData) {
+    AppState.activeTask = AppState.tasks[taskData.listId].find(t => t.id === taskData.id)
+  }
 }
 export const tasksService = new TasksService()
