@@ -19,6 +19,8 @@
 import { computed } from '@vue/runtime-core'
 import { commentsService } from '../services/CommentsService'
 import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
+
 export default {
   props: { comment: { type: Object, required: true } },
   setup(props) {

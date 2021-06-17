@@ -35,6 +35,8 @@ import { tasksService } from '../services/TasksService'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListService'
+import Notification from '../utils/Notification'
+
 export default {
   props: { list: { type: Object, required: true } },
   setup(props) {

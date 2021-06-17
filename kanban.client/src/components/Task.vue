@@ -18,6 +18,8 @@ import { tasksService } from '../services/TasksService'
 import { commentsService } from '../services/CommentsService'
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
+
 export default {
   props: { task: { type: Object, required: true } },
   setup(props) {

@@ -7,6 +7,9 @@
           src="../assets/img/samurai-logo.png"
           height="100"
         />
+        <h2 class="text-warning text-shadow">
+          BanKan
+        </h2>
       </div>
     </router-link>
     <button

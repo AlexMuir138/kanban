@@ -1,9 +1,11 @@
 <template>
   <div class="card col-3 text-center rounded m-3 bg-info">
-    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-2 border shadow-lg bg-light rounded" :title="board.name">
-      <h2>{{ board.name }}</h2>
+    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-3 border shadow-lg bg-light rounded" :title="board.name">
+      <h2 class="m-2">
+        {{ board.name }}
+      </h2>
     </router-link>
-    <p>
+    <p class="email bg-danger rounded text-warning">
       {{ board.email }}
       <img :src="board.picture" :alt="board.email" class="rounded-pill" height="40" />
     </p>
@@ -48,6 +50,10 @@ export default {
 .Board-trash:hover{
   color: yellow;
   font-size: 125%;
+}
+.email {
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
 }
 
 </style>
