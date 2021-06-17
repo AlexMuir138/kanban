@@ -1,7 +1,7 @@
 <template>
   <div class="home d-flex align-items-center justify-content-center">
     <div class="row m-3">
-      <div class="card bg-info p-3">
+      <div class="card bg-info p-3 shadow-lg">
         <form class="form" @submit.prevent="createBoard">
           <label for="board-name">
             <input type="text" class="form-control mb-3" placeholder="New Board Name" name="board-name" v-model="state.newBoard.name">

@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="d-flex align-items-column justify-content-between p-3">
+        <div class="d-flex align-items-column justify-content-between p-3 text-success">
           <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter">
-            {{ task.name }}
+            <u>{{ task.name }}</u>
           </p>
-          <i @click="deleteTask" v-if="task.creatorId === account.id" class="mdi mdi-trash-can-outline"></i>
+          <i @click="deleteTask" v-if="task.creatorId === account.id" class=" Trash-2 mdi mdi-trash-can-outline text-danger rounded-pill"></i>
         </div>
       </div>
     </div>
@@ -36,5 +36,15 @@ export default {
 </script>
 
 <style>
+p{
+  cursor: pointer;
+}
+i{
+  cursor: pointer;
+}
+.Trash-2:hover{
+  font-size: 150%;
+  background-color: yellow;
+}
 
 </style>

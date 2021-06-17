@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="commentBody border-0 rounded p-3 bg-success">
+      <div class="commentBody border-0 rounded p-3 bg-success d-flex justify-content-between">
         {{ comment.body }}
-        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline"></i>
+        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline text-warning rounded"></i>
       </div>
       <div class="d-flex justify-content-end p-3">
         <img :src="comment.picture" :alt="comment.email" class="rounded-pill" height="40" />
@@ -41,5 +41,8 @@ export default {
 img {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px #222);
+}
+i:hover{
+  background-color: var(--danger);
 }
 </style>

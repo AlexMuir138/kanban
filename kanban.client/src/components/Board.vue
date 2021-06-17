@@ -1,15 +1,18 @@
 <template>
-  <div class="card col-3 text-center rounded m-3">
-    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-2 border shadow-lg">
+  <div class="card col-3 text-center rounded m-3 bg-info">
+    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-2 border shadow-lg bg-light rounded">
       <h2>{{ board.name }}</h2>
     </router-link>
-    <p class="p-2">
+    <p>
       {{ board.email }}
       <img :src="board.picture" :alt="board.email" class="rounded-pill" height="40" />
     </p>
-    <div class="d-flex align-items-column justify-content-center text-danger shadow-lg m-3">
-      <p>Delete</p>
-      <i @click="deleteBoard" v-if="board.creatorId === account.id" class="mdi mdi-trash-can-outline"></i>
+    <div class="container-fluid">
+      <p>
+        <u class="d-flex justify-content-between p-3 m-2">Delete Board -->
+          <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded"></i>
+        </u>
+      </p>
     </div>
   </div>
 </template>
@@ -35,5 +38,9 @@ export default {
 </script>
 
 <style>
+.Board-trash:hover{
+  color: yellow;
+  font-size: 125%;
+}
 
 </style>

@@ -4,8 +4,9 @@
       <div class="card-header text-center text-light bg-info">
         <h3><u> {{ list.name }}</u></h3>
       </div>
-      <div class="card-body">
-        <Task v-for="task in state.tasks" :key="task.id" :task="task" />
+      <div class="card-body bg-primary ">
+        <Task v-for="task in state.tasks" :key="task.id" :task="task">
+        </task>
       </div>
       <div class="card-footer bg-info">
         <form @submit.prevent="createTask" :id="list.id">
@@ -18,8 +19,8 @@
             </button>
           </div>
           <div>
-            <h5 class="d-flex justify-content-center p-2 text-danger">
-              Trash this list<i @click="deleteList" class="mdi mdi-trash-can-outline"></i>
+            <h5 class="d-flex justify-content-center p-2 text-warning">
+              Trash this list --> <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded"></i></h3>
             </h5>
           </div>
         </form>
@@ -70,6 +71,10 @@ export default {
 .border-1 {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px #222);
+}
+.Trash-1:hover{
+  background-color: yellow;
+  font-size: 101%;
 }
 
 </style>
