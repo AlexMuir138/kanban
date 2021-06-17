@@ -6,12 +6,20 @@ export class TasksController extends BaseController {
   constructor() {
     super('api/lists/:id/tasks')
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
+      .use(Auth0Provider.getAuthorizedUserInfo, this.isTaskOwner)
       .get('', this.getAllTasks)
       .get('/:taskId', this.getTaskById)
       .post('', this.createTask)
       .put('/:taskId', this.changeList)
       .delete('/:taskId', this.deleteTask)
+  }
+
+  async isTaskOwner(req, res, next) {
+    try {
+      await tasksService.getTaskById(req.params.taskId, req.userInfo.id)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getAllTasks(req, res, next) {
@@ -25,7 +33,7 @@ export class TasksController extends BaseController {
 
   async getTaskById(req, res, next) {
     try {
-      const list = await tasksService.getTaskById(req.params.taskId)
+      const list = await tasksService.getTaskById(req.params.taskId, req.userInfo.id)
       return res.send(list)
     } catch (error) {
       next(error)

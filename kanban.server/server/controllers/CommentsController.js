@@ -6,11 +6,19 @@ export class CommentsController extends BaseController {
   constructor() {
     super('api/tasks/:taskId/comments')
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
+      .use(Auth0Provider.getAuthorizedUserInfo, this.isCommentOwner)
       .get('', this.getAllComments)
       .get('/:commentId', this.getCommentById)
       .post('', this.createComment)
       .delete('/:commentId', this.deleteComment)
+  }
+
+  async isCommentOwner(req, res, next) {
+    try {
+      await commentsService.getCommentById(req.params.commentId, req.userInfo.id)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getAllComments(req, res, next) {
@@ -24,7 +32,7 @@ export class CommentsController extends BaseController {
 
   async getCommentById(req, res, next) {
     try {
-      const task = await commentsService.getCommentById(req.params.commentId)
+      const task = await commentsService.getCommentById(req.params.commentId, req.userInfo.id)
       return res.send(task)
     } catch (error) {
       next(error)

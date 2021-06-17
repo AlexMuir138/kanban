@@ -5,11 +5,20 @@ export class BoardsController extends BaseController {
   constructor() {
     super('api/boards')
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
+      .use(Auth0Provider.getAuthorizedUserInfo, this.isBoardOwner)
       .get('', this.getAll)
       .get('/:id', this.getById)
       .post('', this.create)
       .delete('/:id', this.delete)
+  }
+
+  async isBoardOwner(req, res, next) {
+    try {
+      req.board = await boardsService.getById(req.params.id, req.userInfo.id)
+      next()
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getAll(req, res, next) {
@@ -23,7 +32,7 @@ export class BoardsController extends BaseController {
 
   async getById(req, res, next) {
     try {
-      const board = await boardsService.getById(req.params.id)
+      const board = await boardsService.getById(req.params.id, req.userInfo.id)
       return res.send(board)
     } catch (error) {
       next(error)
