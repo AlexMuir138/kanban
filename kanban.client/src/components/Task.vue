@@ -3,10 +3,10 @@
     <div class="col-12">
       <div class="card">
         <div class="d-flex align-items-column justify-content-between p-3 text-success">
-          <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter">
+          <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter" title="View Task">
             <u>{{ task.name }}</u>
           </p>
-          <i @click="deleteTask" v-if="task.creatorId === account.id" class=" Trash-2 mdi mdi-trash-can-outline text-danger rounded-pill"></i>
+          <i @click="deleteTask" v-if="task.creatorId === account.id" class=" Trash-2 mdi mdi-trash-can-outline text-danger rounded-pill" title="Delete Task"></i>
         </div>
       </div>
     </div>
@@ -24,7 +24,9 @@ export default {
     return {
       account: computed(() => AppState.account),
       async deleteTask() {
-        await tasksService.deleteTask(props.task)
+        if (await Notification.confirmAction()) {
+          await tasksService.deleteTask(props.task)
+        }
       },
       setActiveTask() {
         tasksService.setActiveTask(props.task)

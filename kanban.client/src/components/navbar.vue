@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" title="To Home">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
@@ -17,13 +17,14 @@
       aria-controls="navbarText"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      title="Login Menu"
     >
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
+          <router-link :to="{ name: 'Home' }" class="nav-link" title="Home Page">
             <h2 class="mdi mdi-home">
               Home
             </h2>
@@ -35,6 +36,7 @@
           class="btn btn-outline-primary text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
+          title="Login"
         >
           Login
         </button>
@@ -56,8 +58,9 @@
             class="dropdown-menu p-0 list-group w-100"
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
+            title="Show Login Menu"
           >
-            <router-link :to="{ name: 'Account' }">
+            <router-link :to="{ name: 'Account' }" title="Account Page">
               <div class="list-group-item list-group-item-action hoverable">
                 Account
               </div>
@@ -65,6 +68,7 @@
             <div
               class="list-group-item list-group-item-action hoverable"
               @click="logout"
+              title="Logout"
             >
               logout
             </div>

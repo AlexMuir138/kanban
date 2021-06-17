@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="commentBody border-0 rounded p-3 bg-success d-flex justify-content-between">
         {{ comment.body }}
-        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline text-warning rounded"></i>
+        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline text-warning rounded" title="Delete Comment"></i>
       </div>
       <div class="d-flex justify-content-end p-3">
         <img :src="comment.picture" :alt="comment.email" class="rounded-pill" height="40" />
@@ -26,7 +26,9 @@ export default {
       account: computed(() => AppState.account),
 
       async deleteComment() {
-        await commentsService.deleteComment(props.comment)
+        if (await Notification.confirmAction()) {
+          await commentsService.deleteComment(props.comment)
+        }
       }
     }
   }

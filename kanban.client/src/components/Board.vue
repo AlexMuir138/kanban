@@ -1,6 +1,6 @@
 <template>
   <div class="card col-3 text-center rounded m-3 bg-info">
-    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-2 border shadow-lg bg-light rounded">
+    <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-2 border shadow-lg bg-light rounded" :title="board.name">
       <h2>{{ board.name }}</h2>
     </router-link>
     <p>
@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <p>
         <u class="d-flex justify-content-between p-3 m-2">Delete Board -->
-          <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded"></i>
+          <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded" title="Delete Board"></i>
         </u>
       </p>
     </div>
@@ -21,16 +21,23 @@
 import { computed } from '@vue/runtime-core'
 import { boardsService } from '../services/BoardsService'
 import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
 export default {
   props: { board: { type: Object, required: true } },
   setup(props) {
     return {
       account: computed(() => AppState.account),
       setActiveBoard() {
-        boardsService.setActiveBoard(props.board.id)
+        try {
+          boardsService.setActiveBoard(props.board.id)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
       },
       async deleteBoard() {
-        await boardsService.deleteBoard(props.board.id)
+        if (await Notification.confirmAction()) {
+          await boardsService.deleteBoard(props.board.id)
+        }
       }
     }
   }

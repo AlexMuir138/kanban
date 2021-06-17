@@ -11,7 +11,7 @@
           <label for="List Name">
             <input type="text" class="form" v-model="state.newList.name" placeholder="New List Name">
           </label>
-          <button type="submit" class="btn btn-primary m-1">
+          <button type="submit" class="btn btn-primary m-1" title="Create List">
             Create New List
           </button>
         </form>

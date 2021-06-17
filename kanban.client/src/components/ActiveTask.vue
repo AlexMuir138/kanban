@@ -20,6 +20,7 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    title="Move to new list"
             >
               Move to List...
             </button>
@@ -30,12 +31,13 @@
                 v-for="list in lists"
                 :key="list.id"
                 @click="changeList(list.id)"
+                :title="list.name"
               >
                 {{ list.name }}
               </a>
             </div>
           </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="close task">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -53,7 +55,7 @@
                       class="form-control mb-1"
             ></textarea>
             <div class="d-flex justify-content-end p-2">
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-primary" type="submit" title="submit comment">
                 submit commment
               </button>
             </div>
@@ -71,6 +73,7 @@ import { commentsService } from '../services/CommentsService'
 import { tasksService } from '../services/TasksService'
 import { listsService } from '../services/ListService'
 import { useRoute } from 'vue-router'
+import Notification from '../utils/Notification'
 export default {
   setup() {
     const route = useRoute()
@@ -86,12 +89,20 @@ export default {
       lists: computed(() => AppState.lists),
       board: computed(() => AppState.activeBoard),
       async createComment() {
-        await commentsService.createComment(state.newComment)
+        try {
+          await commentsService.createComment(state.newComment)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
         state.newComment.body = ''
       },
       async changeList(newListId) {
         state.updatedTask.listId = newListId
-        await tasksService.changeList(AppState.activeTask.listId, state.updatedTask)
+        try {
+          await tasksService.changeList(AppState.activeTask.listId, state.updatedTask)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
         // eslint-disable-next-line no-undef
         $('#exampleModalCenter').hide()
         // eslint-disable-next-line no-undef

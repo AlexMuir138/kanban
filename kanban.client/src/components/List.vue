@@ -14,13 +14,13 @@
             <input type="text" name="Task Name" placeholder="Create a Task" v-model="state.newTask.name">
           </label>
           <div class="d-flex justify-content-center p-3 ">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" title="Create Task">
               Create Task
             </button>
           </div>
           <div>
             <h5 class="d-flex justify-content-center p-2 text-warning">
-              Trash this list --> <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded"></i></h3>
+              Trash this list --> <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded" title="Delete List"></i></h3>
             </h5>
           </div>
         </form>
@@ -60,7 +60,9 @@ export default {
         state.newTask.name = ''
       },
       async deleteList() {
-        await listsService.deleteList(props.list)
+        if (await Notification.confirmAction()) {
+          await listsService.deleteList(props.list)
+        }
       }
     }
   }

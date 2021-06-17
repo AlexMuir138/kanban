@@ -6,7 +6,7 @@
           <label for="board-name">
             <input type="text" class="form-control mb-3" placeholder="New Board Name" name="board-name" v-model="state.newBoard.name">
           </label>
-          <button type="submit" class="btn btn-primary mb-2">
+          <button type="submit" class="btn btn-primary mb-2" title="Create Board">
             Create Board
           </button>
         </form>
