@@ -73,6 +73,7 @@ import { commentsService } from '../services/CommentsService'
 import { tasksService } from '../services/TasksService'
 import { listsService } from '../services/ListService'
 import { useRoute } from 'vue-router'
+import Notification from '../utils/Notification'
 export default {
   setup() {
     const route = useRoute()
@@ -88,12 +89,20 @@ export default {
       lists: computed(() => AppState.lists),
       board: computed(() => AppState.activeBoard),
       async createComment() {
-        await commentsService.createComment(state.newComment)
+        try {
+          await commentsService.createComment(state.newComment)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
         state.newComment.body = ''
       },
       async changeList(newListId) {
         state.updatedTask.listId = newListId
-        await tasksService.changeList(AppState.activeTask.listId, state.updatedTask)
+        try {
+          await tasksService.changeList(AppState.activeTask.listId, state.updatedTask)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
         // eslint-disable-next-line no-undef
         $('#exampleModalCenter').hide()
         // eslint-disable-next-line no-undef

@@ -59,7 +59,9 @@ export default {
         state.newTask.name = ''
       },
       async deleteList() {
-        await listsService.deleteList(props.list)
+        if (await Notification.confirmAction()) {
+          await listsService.deleteList(props.list)
+        }
       }
     }
   }

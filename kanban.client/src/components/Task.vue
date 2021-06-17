@@ -24,7 +24,9 @@ export default {
     return {
       account: computed(() => AppState.account),
       async deleteTask() {
-        await tasksService.deleteTask(props.task)
+        if (await Notification.confirmAction()) {
+          await tasksService.deleteTask(props.task)
+        }
       },
       setActiveTask() {
         tasksService.setActiveTask(props.task)

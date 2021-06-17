@@ -26,7 +26,9 @@ export default {
       account: computed(() => AppState.account),
 
       async deleteComment() {
-        await commentsService.deleteComment(props.comment)
+        if (await Notification.confirmAction()) {
+          await commentsService.deleteComment(props.comment)
+        }
       }
     }
   }

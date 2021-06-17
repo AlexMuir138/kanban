@@ -18,16 +18,23 @@
 import { computed } from '@vue/runtime-core'
 import { boardsService } from '../services/BoardsService'
 import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
 export default {
   props: { board: { type: Object, required: true } },
   setup(props) {
     return {
       account: computed(() => AppState.account),
       setActiveBoard() {
-        boardsService.setActiveBoard(props.board.id)
+        try {
+          boardsService.setActiveBoard(props.board.id)
+        } catch (error) {
+          Notification.toast(error.message, 'error')
+        }
       },
       async deleteBoard() {
-        await boardsService.deleteBoard(props.board.id)
+        if (await Notification.confirmAction()) {
+          await boardsService.deleteBoard(props.board.id)
+        }
       }
     }
   }
