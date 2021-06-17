@@ -3,10 +3,10 @@
     <div class="col-12">
       <div class="card">
         <div class="d-flex align-items-column justify-content-between p-3">
-          <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter">
+          <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter" title="View Task">
             {{ task.name }}
           </p>
-          <i @click="deleteTask" v-if="task.creatorId === account.id" class="mdi mdi-trash-can-outline"></i>
+          <i @click="deleteTask" v-if="task.creatorId === account.id" class="mdi mdi-trash-can-outline" title="Delete Task"></i>
         </div>
       </div>
     </div>

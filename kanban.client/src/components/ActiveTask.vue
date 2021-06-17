@@ -20,6 +20,7 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    title="Move to new list"
             >
               Move to List...
             </button>
@@ -30,12 +31,13 @@
                 v-for="list in lists"
                 :key="list.id"
                 @click="changeList(list.id)"
+                :title="list.name"
               >
                 {{ list.name }}
               </a>
             </div>
           </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="close task">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -53,7 +55,7 @@
                       class="form-control mb-1"
             ></textarea>
             <div class="d-flex justify-content-end p-2">
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-primary" type="submit" title="submit comment">
                 submit commment
               </button>
             </div>

@@ -13,13 +13,13 @@
             <input type="text" name="Task Name" placeholder="Create a Task" v-model="state.newTask.name">
           </label>
           <div class="d-flex justify-content-center p-3 ">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" title="Create Task">
               Create Task
             </button>
           </div>
           <div>
             <h5 class="d-flex justify-content-center p-2 text-danger">
-              Trash this list<i @click="deleteList" class="mdi mdi-trash-can-outline"></i>
+              Trash this list<i @click="deleteList" class="mdi mdi-trash-can-outline" title="Delete List"></i>
             </h5>
           </div>
         </form>
