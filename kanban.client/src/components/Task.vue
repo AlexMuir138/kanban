@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="d-flex align-items-column justify-content-between p-3 text-success">
+        <div class="d-flex align-items-column justify-content-between p-3 text-dark">
           <p @click="setActiveTask" data-toggle="modal" data-target="#exampleModalCenter" title="View Task">
             <u>{{ task.name }}</u>
           </p>

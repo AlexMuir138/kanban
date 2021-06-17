@@ -1,13 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" title="To Home">
-      <div class="d-flex flex-column align-items-center">
+      <div class="thumbnail d-flex flex-column align-items-center">
         <img
           alt="logo"
           src="../assets/img/samurai-logo.png"
           height="100"
         />
-        <h2 class="bankan text-light">
+        <h2 class=" text-light">
           BanKan
         </h2>
       </div>
@@ -134,5 +134,8 @@ img {
 }
 .home-icon:hover{
   font-size: 220%;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222);
   }
+
 </style>

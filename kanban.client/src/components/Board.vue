@@ -10,9 +10,9 @@
       <img :src="board.picture" :alt="board.email" class="rounded-pill" height="40" />
     </p>
     <div class="container-fluid">
-      <p>
-        <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded" title="Delete Board"></i>
-      </p>
+      <h2>
+        <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline text-warning bg-secondary rounded" title="Delete Board"></i>
+      </h2>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
 
 <style>
 .Board-trash:hover{
-  color: yellow;
+ font-size: 90%;
 }
 .email {
     -webkit-filter: drop-shadow(5px 5px 5px #222);

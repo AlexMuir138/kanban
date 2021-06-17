@@ -47,7 +47,8 @@ img {
     filter:         drop-shadow(5px 5px 5px #222);
 }
 i:hover{
-  background-color: var(--danger);
+  background-color: var(--warning);
+  font-size: 90%;
 }
 .mdi-trash-can-outline{
   color:#114e29;

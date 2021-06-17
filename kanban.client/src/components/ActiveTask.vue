@@ -37,7 +37,7 @@
               </a>
             </div>
           </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="close task">
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close" title="close task">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

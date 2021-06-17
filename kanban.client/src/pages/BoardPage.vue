@@ -5,7 +5,7 @@
         <ActiveTask v-if="activeTask" />
       </div>
     </div>
-    <div class="row m-3">
+    <div class="row m-5">
       <div class="col-12 d-flex justify-content-center">
         <form @submit.prevent="createList" class="board-form border-0 card p-3 mx-3 bg-light shadow-lg">
           <label for="List Name">
@@ -17,7 +17,7 @@
         </form>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-between">
       <List v-for="list in lists" :key="list.id" :list="list" />
     </div>
   </div>

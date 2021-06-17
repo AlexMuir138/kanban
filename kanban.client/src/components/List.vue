@@ -5,8 +5,7 @@
         <h3><u> {{ list.name }}</u></h3>
       </div>
       <div class="card-body bg-primary ">
-        <Task v-for="task in state.tasks" :key="task.id" :task="task">
-        </task>
+        <Task v-for="task in state.tasks" :key="task.id" :task="task" />
       </div>
       <div class="card-footer bg-info">
         <form @submit.prevent="createTask" :id="list.id">
@@ -20,7 +19,7 @@
           </div>
           <div>
             <h5 class="d-flex justify-content-center text-warning">
-              <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded" title="Delete List"></i></h3>
+              <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger bg-warning rounded" title="Delete List"></i></h3>
             </h5>
           </div>
         </form>
@@ -77,8 +76,7 @@ export default {
     filter:         drop-shadow(5px 5px 5px #222);
 }
 .Trash-1:hover{
-  background-color: yellow;
-  font-size: 101%;
+  font-size: 90%;
 }
 .task-card{
   background-image: url('../assets/img/rainbow-wallpaper.jpeg');
