@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="main-image">
     <router-view />
   </main>
   <footer>
@@ -30,5 +30,10 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.main-image{
+  background-image: url('./assets/img/unsploosh.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+}
 
 </style>

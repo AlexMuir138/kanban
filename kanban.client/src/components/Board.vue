@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-3 text-center rounded m-3 bg-info">
+  <div class="board-card card col-3 text-center rounded m-3 bg-info d-flex justify-content-between border-0">
     <router-link :to="{name: 'Board', params: {id: board.id}}" @click="setActiveBoard" class="p-3 m-3 border shadow-lg bg-light rounded" :title="board.name">
       <h2 class="m-2">
         {{ board.name }}
@@ -11,9 +11,7 @@
     </p>
     <div class="container-fluid">
       <p>
-        <u class="d-flex justify-content-between p-3 m-2">Delete Board -->
-          <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded" title="Delete Board"></i>
-        </u>
+        <i @click="deleteBoard" v-if="board.creatorId === account.id" class="Board-trash mdi mdi-trash-can-outline rounded" title="Delete Board"></i>
       </p>
     </div>
   </div>
@@ -49,11 +47,14 @@ export default {
 <style>
 .Board-trash:hover{
   color: yellow;
-  font-size: 125%;
 }
 .email {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px #222);
+}
+.board-card{
+  background-image: url('../assets/img/Sammy.jpeg');
+  background-size: 50vh;
 }
 
 </style>

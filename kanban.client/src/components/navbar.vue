@@ -7,7 +7,7 @@
           src="../assets/img/samurai-logo.png"
           height="100"
         />
-        <h2 class="text-warning text-shadow">
+        <h2 class="bankan text-light">
           BanKan
         </h2>
       </div>
@@ -28,7 +28,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link" title="Home Page">
-            <h2 class="mdi mdi-home">
+            <h2 class="home-icon mdi mdi-home text-light">
               Home
             </h2>
           </router-link>
@@ -55,7 +55,7 @@
               height="40"
               class="rounded-pill"
             />
-            <span class="mx-3">{{ user.name }}</span>
+            <span class="mx-3 text-light">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -132,4 +132,7 @@ img {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px #222);
 }
+.home-icon:hover{
+  font-size: 220%;
+  }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="commentBody border-0 rounded p-3 bg-success d-flex justify-content-between">
+      <div class="commentBody border-0 rounded p-3 bg-success d-flex justify-content-between text-dark">
         {{ comment.body }}
-        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline text-warning rounded" title="Delete Comment"></i>
+        <i @click="deleteComment" v-if="comment.creatorId === account.id" class="mdi mdi-trash-can-outline rounded" title="Delete Comment"></i>
       </div>
-      <div class="d-flex justify-content-end p-3">
+      <div class="d-flex justify-content-center p-3">
         <img :src="comment.picture" :alt="comment.email" class="rounded-pill" height="40" />
-        <p class="p-2">
+        <p class="p-2 text-light bg-primary rounded-pill">
           {{ comment.email }}
         </p>
       </div>
@@ -49,4 +49,8 @@ img {
 i:hover{
   background-color: var(--danger);
 }
+.mdi-trash-can-outline{
+  color:#114e29;
+}
+
 </style>

@@ -7,7 +7,7 @@
     </div>
     <div class="row m-3">
       <div class="col-12 d-flex justify-content-center">
-        <form @submit.prevent="createList" class="card p-3 mx-3 bg-light shadow-lg">
+        <form @submit.prevent="createList" class="board-form border-0 card p-3 mx-3 bg-light shadow-lg">
           <label for="List Name">
             <input type="text" class="form" v-model="state.newList.name" placeholder="New List Name">
           </label>
@@ -60,6 +60,10 @@ export default {
 form {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px #222);
+}
+.board-form{
+  background-image: url('../assets/img/rainbow-wallpaper.jpeg');
+  background-size: 50vh;
 }
 
 </style>

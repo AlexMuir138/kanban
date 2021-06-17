@@ -1,5 +1,5 @@
 <template class="pb-3">
-  <div class="border-1 col-3 m-3 p-3 shadow-lg bg-info rounded">
+  <div class="task-card border-1 col-3 m-3 p-3 shadow-lg bg-info rounded">
     <div class="card border-0">
       <div class="card-header text-center text-light bg-info">
         <h3><u> {{ list.name }}</u></h3>
@@ -19,8 +19,8 @@
             </button>
           </div>
           <div>
-            <h5 class="d-flex justify-content-center p-2 text-warning">
-              Trash this list --> <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded" title="Delete List"></i></h3>
+            <h5 class="d-flex justify-content-center text-warning">
+              <h3><i @click="deleteList" class="Trash-1 mdi mdi-trash-can-outline text-danger rounded" title="Delete List"></i></h3>
             </h5>
           </div>
         </form>
@@ -79,6 +79,10 @@ export default {
 .Trash-1:hover{
   background-color: yellow;
   font-size: 101%;
+}
+.task-card{
+  background-image: url('../assets/img/rainbow-wallpaper.jpeg');
+  background-size: 50vh;
 }
 
 </style>

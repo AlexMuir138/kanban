@@ -7,10 +7,10 @@
        aria-labelledby="exampleModalCenterTitle"
        aria-hidden="true"
   >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+    <div class=" modal-dialog modal-dialog-centered" role="document">
+      <div class="comment-form modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-success" id="exampleModalLongTitle">
+          <h5 class="modal-title text-light" id="exampleModalLongTitle">
             <u> {{ activeTask.name }}</u>
           </h5>
           <div class="dropdown px-5">
@@ -117,5 +117,9 @@ export default {
 </script>
 
 <style>
+.comment-form{
+  background-image: url('../assets/img/What.jpeg');
+  background-size: 75vh;
+}
 
 </style>

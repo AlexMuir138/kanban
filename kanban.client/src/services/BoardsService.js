@@ -13,12 +13,12 @@ class BoardsService {
 
   async createBoard(boardData) {
     const res = await api.post('/api/boards', boardData)
-    AppState.boards = AppState.boards.push(res.data)
+    AppState.boards.push(new Board(res.data))
   }
 
   async deleteBoard(id) {
     await api.delete('api/boards/' + id)
-    AppState.boards.filter(b => b.id !== id)
+    AppState.boards = AppState.boards.filter(b => b.id !== id)
   }
 
   setActiveBoard(id) {
