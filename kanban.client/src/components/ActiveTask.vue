@@ -73,7 +73,6 @@ import { commentsService } from '../services/CommentsService'
 import { tasksService } from '../services/TasksService'
 import { listsService } from '../services/ListService'
 import { useRoute } from 'vue-router'
-import Notification from '../utils/Notification'
 export default {
   setup() {
     const route = useRoute()
